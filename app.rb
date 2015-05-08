@@ -16,21 +16,32 @@ end
 
 get('/clients') do
   @clients = Client.all
+  @stylists = Stylist.all
   erb(:clients)
 end
 
 post('/clients') do
   name = params.fetch('name')
-  client = Client.new(name: name, id: nil, stylist_id: 0)
+  stylist_id = params.fetch('stylist_id')
+  client = Client.new(name: name, id: nil, stylist_id: stylist_id)
   client.save
   @clients = Client.all
+  @stylists = Stylist.all
   erb(:clients)
 end
 
 get('/clients/:id') do
   @client = Client.find(params.fetch('id').to_i())
   @stylists = Stylist.all
-  @stylist = Stylist.find(params.fetch(@client.stylist_id()).to_i)
+  @stylist = Stylist.find(@client.stylist_id)
+  erb(:client_info)
+end
+
+post('/clients/:id') do
+  @client = Client.find(params.fetch('id').to_i())
+  @stylists = Stylist.all
+  @stylist = Stylist.find(params.fetch('stylist_id'))
+  @client.update(stylist_id: @stylist.id)
   erb(:client_info)
 end
 
@@ -44,8 +55,6 @@ post('/stylists') do
   stylist = Stylist.new(name: name, id: nil)
   stylist.save()
   @stylists = Stylist.all
-  binding.pry
-
   erb(:stylists)
 end
 
