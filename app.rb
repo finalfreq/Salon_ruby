@@ -19,6 +19,17 @@ get('/clients') do
   erb(:clients)
 end
 
+post('/clients') do
+  name = params.fetch('name')
+  client = Client.new(name: name, id: nil, stylist_id: 0)
+  client.save
+  @clients = Client.all
+  erb(:clients)
+end
+
+get('/clients/:id') do
+  @client = Clint.find(params.fetch('id').to_i())
+end
 get('/stylists') do
   @stylists = Stylist.all
   erb(:stylists)
