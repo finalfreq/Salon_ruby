@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe(Client) do
+
   describe('#name') do
     it('provides the name of the client') do
       client = Client.new(name: "john smith", id: nil, stylist_id: nil)
@@ -39,25 +40,30 @@ describe(Client) do
       end
     end
 
-    describe('#update') do
-      it('allows the client name to be changed or updated') do
-        client = Client.new(name: "john smith", id: 1, stylist_id: 1)
-        client.save
-        client.update(name: "fred smith")
-        expect(client.name).to(eq("fred smith"))
-      end
-
-      it("allows the client stylist's id to be updated") do
-        client = Client.new(name: "john smith", id: 1, stylist_id: 1)
-        client.save
-        client.update(stylist_id: 2)
-        expect(client.stylist_id).to(eq(2))
-      end
+  describe('#update') do
+    it('allows the client name to be changed or updated') do
+      client = Client.new(name: "john smith", id: 1, stylist_id: 1)
+      client.save
+      client.update(name: "fred smith")
+      expect(client.name).to(eq("fred smith"))
     end
 
+    it("allows the client stylist's id to be updated") do
+      client = Client.new(name: "john smith", id: 1, stylist_id: 1)
+      client.save
+      client.update(stylist_id: 2)
+      expect(client.stylist_id).to(eq(2))
+    end
+  end
 
-
-
-
-
+  describe('#delete') do
+    it('deletes the client from the database') do
+      client = Client.new(name: "john smith", id: 1, stylist_id: 1)
+      client1 = Client.new(name: "fred smith", id: 1, stylist_id: 1)
+      client.save
+      client1.save
+      client.delete
+      expect(Client.all).to(eq([client1]))
+    end
+  end
 end
