@@ -39,6 +39,18 @@ class Stylist
     DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{self.id};")
   end
 
+  def clients()
+    all_clients = []
+    found_clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id};")
+    found_clients.each() do |client|
+      name = client['name']
+      id = client['id'].to_i()
+      stylist_id = @id
+      all_clients.push(Stylist.new(name: name, id: id, stylist_id: @id))
+    end
+    all_clients
+  end
+
   def delete()
     DB.exec("DELETE FROM stylists WHERE id = #{self.id};")
   end

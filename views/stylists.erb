@@ -1,0 +1,27 @@
+<h1 class="page-header text-center">Welcome to the Stylists page!</h1>
+
+<p>Add a Stylist to the Salon:</p>
+
+<form action="/stylists" method="post">
+  <div class="form-group">
+    <label for="name">Stylists Name:</label>
+    <input required id="name" name="name" type="text">
+  </div>
+  <button type="submit" class="btn-primary">Add Stylist</button>
+</form>
+
+<% if @stylists.any?() %>
+
+<p>Here are our current stylists:</p>
+
+  <ul>
+    <% @stylists.each() do |stylist| %>
+    <li><a href="/stylists/<%= stylist.id %>"> <%= stylist.name %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+  <h3>It appears no stylists are on the roster. Add a stylist above.</h3>
+
+<% end %>

@@ -15,12 +15,21 @@ end
 
 get('/clients') do
   @clients = Client.all
+  erb(:clients)
 end
 
 get('/stylists') do
   @stylists = Stylist.all
+  erb(:stylists)
 end
 
-post('/Stylist') do
-
+post('/stylists') do
+  name = params.fetch('name')
+  stylist = Stylist.new(name: name, id: nil)
+  stylist.save()
+  @stylists = Stylist.all
+  erb(:stylists)
 end
+
+get('/stylists/:id')
+  @stylist = Stylist.find(params.fetch('id'))
