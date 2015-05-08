@@ -25,7 +25,7 @@ class Stylist
   end
 
   def ==(another_stylist)
-  self.name == another_stylist.name && self.id == another_stylist.id
+    self.name == another_stylist.name && self.id == another_stylist.id
   end
 
   def self.find(id)
@@ -33,3 +33,13 @@ class Stylist
     name = stylist.first['name']
     Stylist.new(name: name, id: id)
   end
+
+  def update(attributes)
+    @name = attributes.fetch(:name, @name)
+      DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{self.id};")
+    end
+
+  def delete()
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id};")
+  end
+end
