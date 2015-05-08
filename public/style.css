@@ -9,7 +9,7 @@ li a {
 
 a {
   color: rgba(25, 144, 213, 0.88);
-  font-size: 15px;
+  font-size: 18px;
   padding: inherit;
 }
 
@@ -22,7 +22,7 @@ a {
 }
 
 .center{
-    width:400px;
+    width:280px;
     margin:0 auto;
     text-align:left;
 }

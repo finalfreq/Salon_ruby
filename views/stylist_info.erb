@@ -20,7 +20,7 @@
 <br>
 <% if @stylist.clients.any? %>
   <div class="center">
-    <p class="lead">Here is a list of current clients for <%= @stylist.name() %>:</p>
+    <p class="lead"><%= @stylist.name() %>'s clients:</p>
     <ul>
       <% @stylist.clients.each() do |client| %>
       <li><a href="/clients/<%= client.id %>"><%= client.name() %></a></li>
