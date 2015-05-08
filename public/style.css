@@ -1,0 +1,28 @@
+li a {
+  font-size: 20px;
+  color:#a98ed0
+}
+
+.page-header {
+  font-family: fantasy;
+}
+
+a {
+  color: rgba(25, 144, 213, 0.88);
+  font-size: 15px;
+  padding: inherit;
+}
+
+#stylists {
+  float: left;
+}
+
+#clients {
+  float: right;
+}
+
+.center{
+    width:400px;
+    margin:0 auto;
+    text-align:left;
+}

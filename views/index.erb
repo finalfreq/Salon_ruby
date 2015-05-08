@@ -1,14 +1,15 @@
 <h1 class= "page-header text-center">Welcome to SuperCuts!</h1>
 
 <% if @stylists.any?() %>
-<p>Here are our current stylists:</p>
+<div class="center">
+<p class="lead">Here are our current stylists:</p>
 
   <ul>
     <% @stylists.each() do |stylist| %>
     <li><a href="/stylists/<%= stylist.id %>"> <%= stylist.name %></a></li>
     <% end %>
   </ul>
-
+</div>
 <% else %>
 
 <h3>Currently there are no stylists: <a href="/stylists"> Add a Stylist here! </a></h3>
@@ -18,7 +19,7 @@
 
 <% if @stylists.any?() %>
 
-<h3>To see a list of current clients visit our  <a href="/clients">clients page </a></h3>
-<h3>To see a list of current stylists visit our <a href="/stylists">stylists page </a></h3>
+<h4 id="stylists">To see a list of current clients visit our  <a href="/clients">clients page </a></h4>
+<h4 id="clients">To see a list of current stylists visit our <a href="/stylists">stylists page </a></h4>
 
 <% end %>

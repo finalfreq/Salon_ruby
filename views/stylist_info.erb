@@ -19,17 +19,20 @@
 </form>
 <br>
 <% if @stylist.clients.any? %>
-  <p class="lead">Here is a list of current clients for <%= @stylist.name() %>:
-  </p>
+  <div class="center">
+    <p class="lead">Here is a list of current clients for <%= @stylist.name() %>:</p>
+    <ul>
+      <% @stylist.clients.each() do |client| %>
+      <li><a href="/clients/<%= client.id %>"><%= client.name() %></a></li>
+      <% end %>
+    </ul>
+  </div>
 
-  <ul>
-    <% @stylist.clients.each() do |client| %>
-    <li><a href="/clients/<%= client.id %>"><%= client.name() %></a></li>
-    <% end %>
-  </ul>
-  <a href="/clients">Add additional clients here </a>
+    <a href="/clients">Add additional clients here </a>
 <% else %>
 
 <h3>It looks like no clients have been added yet, <a href="/clients">Add a Client here </a> </h3>
 
 <% end %>
+
+<a href="/">Go to Home Page</a> <br>

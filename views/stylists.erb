@@ -1,6 +1,6 @@
 <h1 class="page-header text-center">Welcome to the Stylists page!</h1>
 
-<p>Add a Stylist to the Salon:</p>
+<p class="lead">Add a Stylist to the Salon:</p>
 
 <form action="/stylists" method="post">
   <div class="form-group">
@@ -12,16 +12,19 @@
 
 <% if @stylists.any?() %>
 <br>
-<p class="lead">Here are our current stylists:</p>
-
+<div class="center">
+  <p class="lead">Here are our current stylists:</p>
   <ul>
     <% @stylists.each() do |stylist| %>
     <li><a href="/stylists/<%= stylist.id %>"> <%= stylist.name %></a></li>
     <% end %>
   </ul>
-
+</div>
 <% else %>
 
   <h3>It appears no stylists are on the roster. Add a stylist above.</h3>
 
 <% end %>
+
+
+<a href="/">Go to Home Page</a> <br>

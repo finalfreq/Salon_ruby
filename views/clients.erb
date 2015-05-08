@@ -22,16 +22,18 @@
 
 <% if @clients.any?() %>
 <br>
-<p class="lead">Here are our current Clients:</p>
-
+<div class="center">
+  <p class="lead">Here are our current Clients:</p>
   <ul>
     <% @clients.each() do |client| %>
     <li><a href="/clients/<%= client.id %>"> <%= client.name %></a></li>
     <% end %>
   </ul>
-
+</div>
 <% else %>
 
   <h3>It appears no clients are signed up. Add a client above.</h3>
 
 <% end %>
+
+<a href="/">Go to Home Page</a> <br>
