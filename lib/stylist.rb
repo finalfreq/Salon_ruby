@@ -22,4 +22,14 @@ class Stylist
       stylists.push(Stylist.new(name: name, id: id))
     end
     stylists
-  en
+  end
+
+  def ==(another_stylist)
+  self.name == another_stylist.name && self.id == another_stylist.id
+  end
+
+  def self.find(id)
+    stylist = DB.exec("SELECT * FROM stylists WHERE id = #{id} ;")
+    name = stylist.first['name']
+    Stylist.new(name: name, id: id)
+  end
