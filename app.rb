@@ -31,5 +31,6 @@ post('/stylists') do
   erb(:stylists)
 end
 
-get('/stylists/:id')
-  @stylist = Stylist.find(params.fetch('id'))
+get('/stylists/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i())
+end

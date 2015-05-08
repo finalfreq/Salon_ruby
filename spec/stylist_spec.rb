@@ -49,8 +49,7 @@ describe(Stylist) do
     end
   end
 
-
-   describe('#delete') do
+  describe('#delete') do
     it('deletes the stylist from the database') do
       stylist = Stylist.new(name: "dolly parton", id: 1 )
       stylist1 = Stylist.new(name: "bon jovie", id: 1)
@@ -58,6 +57,20 @@ describe(Stylist) do
       stylist1.save
       stylist.delete
       expect(Stylist.all).to(eq([stylist1]))
+    end
+  end
+
+  describe('#clients') do
+    it('returns all clients of the stylist') do
+      stylist = Stylist.new(name: "dolly parton", id: 1 )
+      stylist.save
+      client = Client.new(name: "john smith", id: 1, stylist_id: 1)
+      client1 = Client.new(name: "fred smith", id: 1, stylist_id: 1)
+      client.save
+      client1.save
+      client.update(stylist_id: stylist.id)
+      client1.update(stylist_id: stylist.id)
+      expect(stylist.clients).to(eq([client, client1]))
     end
   end
 end

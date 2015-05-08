@@ -8,6 +8,6 @@ describe('the home navigation process', type: :feature) do
   it('links to stylists page') do
     visit('/')
     click_link('stylists page')
-    expect(page).to have_content("Our current Stylists!")
+    expect(page).to have_content("Welcome to the Stylists page!")
   end
 end
