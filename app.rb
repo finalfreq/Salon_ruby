@@ -28,8 +28,12 @@ post('/clients') do
 end
 
 get('/clients/:id') do
-  @client = Clint.find(params.fetch('id').to_i())
+  @client = Client.find(params.fetch('id').to_i())
+  @stylists = Stylist.all
+  @stylist = Stylist.find(params.fetch(@client.stylist_id()).to_i)
+  erb(:client_info)
 end
+
 get('/stylists') do
   @stylists = Stylist.all
   erb(:stylists)
@@ -40,6 +44,8 @@ post('/stylists') do
   stylist = Stylist.new(name: name, id: nil)
   stylist.save()
   @stylists = Stylist.all
+  binding.pry
+
   erb(:stylists)
 end
 
