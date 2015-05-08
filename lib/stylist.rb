@@ -5,7 +5,6 @@ class Stylist
   def initialize(attributes)
     @name = attributes[:name]
     @id = attributes[:id]
-
   end
 
   def save()

@@ -27,7 +27,7 @@ describe('get stylist individual info', type: :feature) do
     stylist.save
     visit('/stylists')
     click_link('dolly parton')
-    expect(page).to have_content('Welcome to dolly parton page!')
+    expect(page).to have_content("Welcome to dolly parton's page!")
   end
 end
 

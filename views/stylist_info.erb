@@ -1,4 +1,4 @@
-<h1 class="page-header text-center">Welcome to <%= @stylist.name() %> page!</h1>
+<h1 class="page-header text-center">Welcome to <%= @stylist.name() %>'s page!</h1>
 
 <h3>You can update the name of your Stylist or remove them from here:</h3>
 <br>
@@ -27,7 +27,7 @@
     <li><a href="/clients/<%= client.id %>"><%= client.name() %></a></li>
     <% end %>
   </ul>
-  <a href="/clients">Add additional clients here </a> 
+  <a href="/clients">Add additional clients here </a>
 <% else %>
 
 <h3>It looks like no clients have been added yet, <a href="/clients">Add a Client here </a> </h3>
