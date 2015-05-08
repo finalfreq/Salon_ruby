@@ -10,14 +10,13 @@
     <input id="name" name="name" type="text" class="form-control">
   </div>
 
-  <button type="submit" class="btn-success">Update</button>
+  <button type="submit" class="btn-success">Update Name</button>
 </form>
-<h3>Delete your client</h3>
 <form id="delete" action="/clients/<%= @client.id() %>" method="post">
-  <div class="form-group"
+  <div class="form-group">
   <input name="_method" type="hidden" value="delete">
 </div>
-  <button type="submit" class="btn-danger">Delete client</button>
+  <button type="submit" class="btn-danger">Delete Client</button>
 </form>
 
 <h3>It looks like you have chosen <%= @stylist.name %> as your stylist. If you'd like to change stylists select from below.</h3>
@@ -30,7 +29,7 @@
       <% end %>
     </select>
   </div>
-  <button type="submit" name="assign_stylist" class="btn-primary"> Select Stylist </button>
+  <button type="submit" name="assign_stylist" class="btn-primary"> Change Stylist </button>
 </form>
 <br>
 <div class='row'>

@@ -5,9 +5,9 @@
 <form action="/stylists" method="post">
   <div class="form-group">
     <label for="name">Stylists Name:</label>
-    <input required id="name" name="name" type="text">
+    <input required id="name" name="name" type="text" class="form-control">
   </div>
-  <button type="submit" class="btn-primary">Add Stylist</button>
+  <button type="submit" class="btn-success">Add Stylist</button>
 </form>
 
 <% if @stylists.any?() %>

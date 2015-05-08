@@ -1,30 +1,33 @@
 <h1 class="page-header text-center">Welcome to <%= @stylist.name() %> page!</h1>
 
 <h3>You can update the name of your Stylist or remove them from here:</h3>
+<br>
 <form action="/stylists/<%= @stylist.id() %>" method="post">
-  <input name="_method" type="hidden" value="patch">
-  <label for="name">Rename your Stylist:</label>
-  <input id="name" name="name" type="text">
-
-  <button type="submit">Update</button>
+  <div class="form-group">
+    <input name="_method" type="hidden" value="patch">
+    <label for="name">Rename your Stylist:</label>
+    <input id="name" name="name" type="text" class='form-control'>
+  </div>
+  <button type="submit" class="btn-success">Update</button>
 </form>
-
+<br>
 <form action="/stylists/<%= @stylist.id() %>" method="post">
+
   <input name="_method" type="hidden" value="delete">
 
-  <button type="submit">Delete stylist</button>
+  <button type="submit" class="btn-danger">Delete stylist</button>
 </form>
-
+<br>
 <% if @stylist.clients.any? %>
-  <p>Here is a list of current clients for <%= @stylist.name() %>:
+  <p class="lead">Here is a list of current clients for <%= @stylist.name() %>:
   </p>
 
   <ul>
     <% @stylist.clients.each() do |client| %>
-    <li><%= client.name() %></li>
+    <li><a href="/clients/<%= client.id %>"><%= client.name() %></a></li>
     <% end %>
   </ul>
-
+  <a href="/clients">Add additional clients here </a> 
 <% else %>
 
 <h3>It looks like no clients have been added yet, <a href="/clients">Add a Client here </a> </h3>
