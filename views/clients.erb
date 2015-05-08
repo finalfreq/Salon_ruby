@@ -1,0 +1,27 @@
+<h1 class="page-header text-center">Welcome to the Clients page!</h1>
+
+<p>Add a Client to the Salon:</p>
+
+<form action="/clients" method="post">
+  <div class="form-group">
+    <label for="name">Clients Name:</label>
+    <input required id="name" name="name" type="text">
+  </div>
+  <button type="submit" class="btn-primary">Add Client</button>
+</form>
+
+<% if @clients.any?() %>
+<br>
+<p class="lead">Here are our current clients:</p>
+
+  <ul>
+    <% @clients.each() do |client| %>
+    <li><a href="/clients/<%= client.id %>"> <%= client.name %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+  <h3>It appears no clients are signed up. Add a client above.</h3>
+
+<% end %>
