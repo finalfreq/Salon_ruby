@@ -84,7 +84,6 @@ end
 patch("/stylists/:id") do
   name = params.fetch("name")
   @stylist = Stylist.find(params.fetch("id").to_i())
-  client_ids = params.fetch('client_ids')
   @stylist.update(name: name)
   @clients = Client.all
   erb(:stylist_info)
